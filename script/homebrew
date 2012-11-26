@@ -13,7 +13,9 @@ then
   exit
 else
   echo "  + Homebrew found."
+
 fi
 
-# Install grc and coreutils
-brew install grc coreutils autojump
+  # Install grc and coreutils
+brew install grc coreutils
+brew install autojump

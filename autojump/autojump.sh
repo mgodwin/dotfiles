@@ -1,0 +1,1 @@
+[[ -f `brew --prefix`/etc/autojump ]] && . `brew --prefix`/etc/autojump
