@@ -1,10 +1,18 @@
 # shortcut to this dotfiles path is $DOTFILES
 export DOTFILES=$HOME/.dotfiles
 
-# source every .zsh file in this rep
+# source every .sh file in this rep
 for config_file in $(find $DOTFILES -iname "*.sh"); do
   source $config_file
 done
+
+# additionaly source .sh.osx files if we're running OSX
+if [[ `uname -s` -eq "Darwin" ]]
+then
+  for config_file in $(find $DOTFILES -iname "*.sh.osx"); do
+    source $config_file
+  done
+fi
 
 # use .localrc for SUPER SECRET CRAP that you don't
 # want in your public, versioned repo.
