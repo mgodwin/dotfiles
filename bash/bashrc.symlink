@@ -8,7 +8,6 @@ done
 
 # additionaly source .sh.osx files if we're running OSX
 if [ $OS == "Darwin" ]; then
-  echo "$OS"
   for config_file in $(find $DOTFILES -iname "*.sh.osx"); do
     source $config_file
   done

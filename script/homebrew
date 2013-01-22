@@ -16,6 +16,8 @@ else
 
 fi
 
-  # Install grc and coreutils
+brew update
 brew install grc coreutils
 brew install autojump
+brew install rbenv
+brew install ruby-build
