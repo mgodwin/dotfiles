@@ -1,14 +1,14 @@
 # shortcut to this dotfiles path is $DOTFILES
 export DOTFILES=$HOME/.dotfiles
-
+export OS=`uname -s`
 # source every .sh file in this rep
 for config_file in $(find $DOTFILES -iname "*.sh"); do
   source $config_file
 done
 
 # additionaly source .sh.osx files if we're running OSX
-if [[ `uname -s` -eq "Darwin" ]]
-then
+if [ $OS == "Darwin" ]; then
+  echo "$OS"
   for config_file in $(find $DOTFILES -iname "*.sh.osx"); do
     source $config_file
   done
@@ -21,7 +21,7 @@ then
   source ~/.localrc
 fi
 
-if [[ `uname -s` -eq "Darwin" ]]
+if [ $OS == "Darwin" ]
 then
   # Setup bashcompletion provided by homebrew
   if [ -f `brew --prefix`/etc/bash_completion ]; then

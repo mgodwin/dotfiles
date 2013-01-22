@@ -1,10 +1,9 @@
-#!/bin/sh
-#
+#!/usr/bin/env bash
 # bootstrap installs things.
 
 # Assume everyone's on OS X and run Homebrew (*nix-ers beware)
-if [[ `uname -s` -eq "Darwin" ]]
-then
+OS=`uname -s`
+if [ "$OS" == "Darwin" ]; then
 	. script/homebrew
 fi
 
