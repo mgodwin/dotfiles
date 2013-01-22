@@ -21,7 +21,10 @@ then
   source ~/.localrc
 fi
 
-# Setup bashcompletion provided by homebrew
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-  . `brew --prefix`/etc/bash_completion
+if [[ `uname -s` -eq "Darwin" ]]
+then
+  # Setup bashcompletion provided by homebrew
+  if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
+  fi
 fi
