@@ -6,7 +6,7 @@
         protocol = https
 [user]
         name = Mark Godwin
-        email = godwin.mark@gmail.com
+        email = mark.godwin@readytalk.com
 [credential]
         helper = osxkeychain
 [alias]
@@ -15,6 +15,7 @@
         wtf     = !$DOTFILES/bin/git-wtf
         rank-contributers = !$DOTFILES/bin/git-rank-contributers
         count   = !git shortlog -sn
+        st      = !git status
 [color]
         diff = auto
         status = auto
@@ -22,12 +23,22 @@
         ui = true
 [core]
         excludesfile = ~/.gitignore
-        editor = vim
+        editor = subl -w -n
 [apply]
         whitespace = nowarn
 [mergetool]
         keepBackup = false
+	prompt = false
 [difftool]
-        prompt = false
+	prompt = false
 [help]
         autocorrect = 1
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[diff]
+	tool = Kaleidoscope
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
+[merge]
+	tool = Kaleidoscope
