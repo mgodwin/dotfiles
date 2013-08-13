@@ -1,2 +1,2 @@
-export EDITOR='subl -w'
+export EDITOR='vim'
 export TERM='xterm-256color'
