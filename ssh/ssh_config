@@ -1,4 +1,0 @@
-
-Host *
-  LogLevel quiet # Hide stupid unauthorized messages barf.
-

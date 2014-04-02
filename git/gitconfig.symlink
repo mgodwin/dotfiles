@@ -6,7 +6,7 @@
         protocol = https
 [user]
         name = Mark Godwin
-        email = mark.godwin@readytalk.com
+        email = godwin.mark@gmail.com
 [credential]
         helper = osxkeychain
 [alias]

@@ -20,10 +20,10 @@ then
   source ~/.localrc
 fi
 
-if [ $OS == "Darwin" ]
-then
+if [ $OS == "Darwin" ]; then
   # Setup bashcompletion provided by homebrew
-  if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
+  if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    echo "completion"
+    . $(brew --prefix)/etc/bash_completion
   fi
 fi

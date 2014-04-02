@@ -21,3 +21,5 @@ brew install grc coreutils
 brew install autojump
 brew install rbenv
 brew install ruby-build
+brew install git
+brew isntall bash-completion

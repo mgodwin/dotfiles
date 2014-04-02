@@ -1,5 +1,5 @@
 if [ $OS == "Darwin" ]; then
-  [[ -f `brew --prefix`/etc/autojump ]] && . `brew --prefix`/etc/autojump
+  [[ -f `brew --prefix`/etc/autojump.bash ]] && . `brew --prefix`/etc/autojump.bash
 fi
 
 if [ $OS == "Linux" ]; then

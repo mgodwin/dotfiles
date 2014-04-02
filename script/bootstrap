@@ -5,6 +5,11 @@
 OS=`uname -s`
 if [ "$OS" == "Darwin" ]; then
 	. script/homebrew
+else
+  echo "Please install the following packages for this distro:"
+  echo "  autojump: https://github.com/joelthelion/autojump"
+  echo "  rbenv: https://github.com/sstephenson/rbenv"
+  echo "  ruby-build: https://github.com/sstephenson/ruby-build"
 fi
 
 # Run the install (I'd like to pull this out of rake, eventually)
