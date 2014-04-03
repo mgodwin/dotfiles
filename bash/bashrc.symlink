@@ -23,7 +23,6 @@ fi
 if [ $OS == "Darwin" ]; then
   # Setup bashcompletion provided by homebrew
   if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    echo "completion"
     . $(brew --prefix)/etc/bash_completion
   fi
 fi
