@@ -1,14 +1,29 @@
 {
-  "theme": "Soda Dark.sublime-theme",
-  "vintage_start_in_command_mode": true,
-  "tab_size": 2,
-  "translate_tabs_to_spaces": true,
+  "color_scheme": "Packages/Future Funk - Color Scheme/Future Funk (Blue Monday).tmTheme",
   "drawWhiteSpace": true,
+  "font_size": 15,
+  "highlight_modified_tabs": true,
+  "ignored_packages":
+  [
+    "Vintage"
+  ],
   "matchBracketsAngle": true,
   "matchBracketsBraces": true,
   "matchBracketsSquare": true,
-  "rulers": [ 80 ],
+  "rulers":
+  [
+    80
+  ],
+  "save_on_focus_lost": true,
   "show_minimap": false,
+  "tab_size": 2,
+  "theme": "Spacefunk (Blue Monday).sublime-theme",
+  "translate_tabs_to_spaces": true,
   "trimTrailingWhiteSpaceOnSave": true,
-  "highlight_modified_tabs": true
+  "vintage_start_in_command_mode": true,
+  "remember_open_files": false,
+  "hot_exit": false,
+  "bold_folder_labels": true,
+  "shift_tab_unindent": true,
+  "font_size": 15,
 }

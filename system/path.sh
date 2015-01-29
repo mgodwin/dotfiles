@@ -1,11 +1,14 @@
-# Path entries are reverse ordered in specificity
-export PATH="$DOTFILES/bin:$PATH"   # Look here last
-export PATH="$HOME/bin:$PATH"
-export PATH="/usr/local/heroku/bin:$PATH"
-export PATH="$HOME/.rbenv/shims:$PATH"
-export PATH="/usr/local/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
-export PATH="/usr/local/share/npm/bin:$PATH"
-export PATH="./bin:$PATH"           # Look here first
+# Will search here first
+PATH="./bin" 
+PATH="$PATH:$DOTFILES/bin"
+PATH="$PATH:$HOME/bin"
+PATH="$PATH:/usr/local/heroku/bin"
+PATH="$PATH:$HOME/.rbenv/shims"
+PATH="$PATH:/usr/local/bin"
+PATH="$PATH:/usr/local/sbin"
+PATH="$PATH:/usr/local/share/npm/bin"
+PATH="$PATH:/usr/bin:/bin:/usr/sbin:/sbin"
+# Will search here last
+export PATH=$PATH
 
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"

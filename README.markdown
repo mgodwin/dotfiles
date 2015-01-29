@@ -1,10 +1,42 @@
-# mgodwin does dotfiles
+# mgodwin's dotfiles
 
 ## dotfiles
 
 Your dotfiles are how you personalize your system. These are mine. 
-They should work on linux and OSX.  Additional setup tasks will be present
-for linux, but it will guide you through what to do.
+They should work on 'nix and OSX.  Additional setup tasks will be present
+for 'nix, but it will guide you through what to do.
+
+## Philosophy
+
+Simplicity is the focus of these dotfiles.  They should do the minimum amount
+possible to get you setup but also provide hooks for you to customize where
+appropriate.  I don't believe in displaying 5000 things to you on your bash
+prompt.  I've integrated pieces of the bashit project.
+
+## Prompt Theme
+
+My prompt is structured to only show you the minimum amount of information you need
+at any given time to have a productive experience inside your terminal.  It will, based
+on the context of where you are in your file system, show you:
+
+    # Your current path
+    ~/Development
+
+    # Your current git branch
+    ~/Development/Project(master)
+
+    # Your current ruby version (only if using rbenv, and if different than system ruby version)
+    ~/Development/RubyProject(master)(2.1.2)
+
+    # Machine hostname, if dotfiles are installed on remote host
+    hiro:/etc/apache2
+
+Colors are used to visually distinguish the prompt from other commands running
+in your terminal.  This prompt is so simple, and so effective!
+
+Make it your own!  If you don't like what I've done or you need more, you can
+very easily extend what I've done to make it yours.  The prompt is largely based on
+the bashit project, so you can make updates using their same syntax.
 
 ## install
 
@@ -43,3 +75,8 @@ There's a few special files in the hierarchy.
   symlinked in when you run `rake install`.
 - **topic/\*.completion.sh**: Any files ending in `completion.sh` get loaded
   last so that they get loaded after we set up bash autocomplete functions.
+
+## Thanks
+
+The original inspiration for these comes from holman's dotfiles, but have since
+diverged substantially.
