@@ -6,14 +6,14 @@ Your dotfiles are how you personalize your system. These are mine.
 They should work on 'nix and OSX.  Additional setup tasks will be present
 for 'nix, but it will guide you through what to do.  These are specifically for **bash**.
 
-## Philosophy
+## philosophy
 
 Simplicity is the focus of these dotfiles.  They should do the minimum amount
 possible to get you setup but also provide hooks for you to customize where
 appropriate.  I don't believe in displaying 5000 things to you on your bash
 prompt.  I've integrated pieces of the bashit project.
 
-## Prompt Theme
+## prompt theme
 
 My prompt is structured to only show you the minimum amount of information you need
 at any given time to have a productive experience inside your terminal.  It will, based
