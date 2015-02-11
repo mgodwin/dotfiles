@@ -4,7 +4,7 @@
 
 Your dotfiles are how you personalize your system. These are mine. 
 They should work on 'nix and OSX.  Additional setup tasks will be present
-for 'nix, but it will guide you through what to do.
+for 'nix, but it will guide you through what to do.  These are specifically for **bash**.
 
 ## Philosophy
 
@@ -34,32 +34,21 @@ on the context of where you are in your file system, show you:
 Colors are used to visually distinguish the prompt from other commands running
 in your terminal.  This prompt is so simple, and so effective!
 
-Make it your own!  If you don't like what I've done or you need more, you can
-very easily extend what I've done to make it yours.  The prompt is largely based on
-the bashit project, so you can make updates using their same syntax.
-
 ## install
 
-You'll need ruby installed to set things up.
+You'll need ruby installed to set things up.  Make sure you fork the repo and change the gitconfig!
 
 Run this:
 
 ```sh
 git clone https://github.com/mgodwin/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
-script/bootstrap
+# Edit git/gitconfig.symlink
+setup/bootstrap
 ```
 
 This will symlink the appropriate files in `.dotfiles` to your home directory.
 Everything is configured and tweaked within `~/.dotfiles`, though.
-
-## topical
-
-Everything's built around topic areas. If you're adding a new area to your
-forked dotfiles — say, "Java" — you can simply add a `java` directory and put
-files in there. Anything with an extension of `.sh` will get automatically
-included into your shell. Anything with an extension of `.symlink` will get
-symlinked without extension into `$HOME` when you run `rake install`.
 
 ## components
 
@@ -67,16 +56,29 @@ There's a few special files in the hierarchy.
 
 - **bin/**: Anything in `bin/` will get added to your `$PATH` and be made
   available everywhere.
-- **topic/\*.sh**: Any files ending in `.sh` get loaded into your
+- **bash/\*.sh**: Any files ending in `.sh` get loaded into your
   environment.
-- **topic/\*.symlink**: Any files ending in `*.symlink` get symlinked into
+- ***.symlink**: Any files ending in `*.symlink` get symlinked into
   your `$HOME`. This is so you can keep all of those versioned in your dotfiles
   but still keep those autoloaded files in your home directory. These get
   symlinked in when you run `rake install`.
-- **topic/\*.completion.sh**: Any files ending in `completion.sh` get loaded
-  last so that they get loaded after we set up bash autocomplete functions.
+
+## customizing
+
+Use the ~/.localrc hook to store secret stuff you wouldn't want checked into your repo.
+
+## keep it lean
+
+Currently these dotfiles take approx 1s to load.  
+
+    time source ~/.bashrc
+
+    real  0m1.042s
+    user  0m0.612s
+    sys 0m0.402s
+
+You open and close a lot of terminals over your life time.  It'd be better if startup time was reduced to half a second or less, however between autojump, bash completion, and prompt theming the time goes up to just over a second.  Would love to receive a PR that can reduce the startup time even further.
 
 ## Thanks
 
-The original inspiration for these comes from holman's dotfiles, but have since
-diverged substantially.
+The original inspiration for these comes from holman's dotfiles, but have since diverged substantially.

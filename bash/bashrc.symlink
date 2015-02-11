@@ -2,21 +2,13 @@
 export DOTFILES=$HOME/.dotfiles
 export OS=`uname -s`
 # source every .sh file in this rep
-for config_file in $(find $DOTFILES -iname "*.sh"); do
+for config_file in $(find $DOTFILES/bash -iname "*.sh"); do
   source $config_file
 done
 
-# additionaly source .sh.osx files if we're running OSX
-if [ $OS == "Darwin" ]; then
-  for config_file in $(find $DOTFILES -iname "*.sh.osx"); do
-    source $config_file
-  done
-fi
-
 # use .localrc for SUPER SECRET CRAP that you don't
 # want in your public, versioned repo.
-if [[ -a ~/.localrc ]]
-then
+if [[ -a ~/.localrc ]]; then
   source ~/.localrc
 fi
 
@@ -25,9 +17,7 @@ if [ $OS == "Darwin" ]; then
   if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
   fi
-fi
 
-if [ $OS == "Darwin" ]; then
   [[ -f `brew --prefix`/etc/autojump.bash ]] && . `brew --prefix`/etc/autojump.bash
 fi
 
