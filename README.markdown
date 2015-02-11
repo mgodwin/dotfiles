@@ -19,17 +19,19 @@ My prompt is structured to only show you the minimum amount of information you n
 at any given time to have a productive experience inside your terminal.  It will, based
 on the context of where you are in your file system, show you:
 
-    # Your current path
-    ~/Development
+```sh
+# Your current path
+~/Development
 
-    # Your current git branch
-    ~/Development/Project(master)
+# Your current git branch
+~/Development/Project(master)
 
-    # Your current ruby version (only if using rbenv, and if different than system ruby version)
-    ~/Development/RubyProject(master)(2.1.2)
+# Your current ruby version (only if using rbenv, and if different than system ruby version)
+~/Development/RubyProject(master)(2.1.2)
 
-    # Machine hostname, if dotfiles are installed on remote host
-    hiro:/etc/apache2
+# Machine hostname, if dotfiles are installed on remote host
+hiro:/etc/apache2
+```
 
 Colors are used to visually distinguish the prompt from other commands running
 in your terminal.  This prompt is so simple, and so effective!
@@ -58,7 +60,7 @@ There's a few special files in the hierarchy.
   available everywhere.
 - **bash/\*.sh**: Any files ending in `.sh` get loaded into your
   environment.
-- ***.symlink**: Any files ending in `*.symlink` get symlinked into
+- **\*.symlink**: Any files ending in `*.symlink` get symlinked into
   your `$HOME`. This is so you can keep all of those versioned in your dotfiles
   but still keep those autoloaded files in your home directory. These get
   symlinked in when you run `rake install`.
