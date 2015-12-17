@@ -1,6 +1,10 @@
 # shortcut to this dotfiles path is $DOTFILES
 export DOTFILES=$HOME/.dotfiles
 export OS=`uname -s`
+
+# Setup rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
 # source every .sh file in this rep
 for config_file in $(find $DOTFILES/bash -iname "*.sh"); do
   source $config_file
@@ -29,9 +33,6 @@ fi
 if $(grc &>/dev/null);then
   source `brew --prefix`/etc/grc.bashrc
 fi
-
-# Setup rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 export EDITOR='subl -nw'
 export TERM='xterm-256color'
