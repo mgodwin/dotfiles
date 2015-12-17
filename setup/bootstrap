@@ -4,7 +4,7 @@
 # Assume everyone's on OS X and run Homebrew (*nix-ers beware)
 OS=`uname -s`
 if [ "$OS" == "Darwin" ]; then
-	. script/homebrew
+	. setup/homebrew
 else
   echo "Please install the following packages for this distro:"
   echo "  autojump: https://github.com/joelthelion/autojump"
