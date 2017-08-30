@@ -1,0 +1,14 @@
+---
+- name: Install applications
+  homebrew_cask:
+    name: {{item}}
+    state: present
+    with_items:
+      - google-chrome           # Chrome all the way
+      - dropbox                 # Syncing files
+      - cryptomator             # For encrypting files in dropbox
+      - atom                    # For file editing
+      - slack
+      - spectacle               # Excellent tool for window management
+      - dash                    # Dev docs have never been better
+      - iterm2                  # Baked in term sucks kind of

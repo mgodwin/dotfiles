@@ -1,0 +1,33 @@
+# Setup rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+{# inject contents of our aliases file #}
+{{ lookup('file', 'aliases.sh') }}
+
+{# inject contents of our path file #}
+{{ lookup('file', 'path.sh') }}
+
+{# inject contents of our theme file #}
+{{ lookup('file', 'theme.sh') }}
+
+# use .localrc for SUPER SECRET CRAP that you don't
+# want in your public, versioned repo.
+if [[ -a ~/.localrc ]]; then
+  source ~/.localrc
+fi
+
+# Setup bashcompletion provided by homebrew
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
+
+# Setup autojump to quickly jump to directories
+[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+
+# GRC colorizes nifty unix tools all over the place
+if $(grc &>/dev/null);then
+  source `brew --prefix`/etc/grc.bashrc
+fi
+
+export EDITOR='atom --wait'
+export TERM='xterm-256color'

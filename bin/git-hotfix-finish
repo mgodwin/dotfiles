@@ -1,0 +1,28 @@
+#!/bin/sh
+#
+# A simple wrapper script that automates the tedium away from publishing hotfix
+# branches.  Make sure you're on the hotfix branch when you run this.
+#
+# Examples
+#
+#   git hotfix-finish
+#
+set -e
+CURR_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+echo "Checking out master..."
+git checkout master --quiet
+echo "Fetching local changes..."
+git pull --quiet
+echo "Merging hotfix branch..."
+git merge $CURR_BRANCH --commit --quiet
+echo "Checking out develop..."
+git checkout develop --quiet
+echo "Fetching remote changes..."
+git pull --quiet
+echo "Merging hotfix branch..."
+git merge $CURR_BRANCH --commit --quiet
+echo "Pushing develop branch to origin"
+git push
+echo "Pushing master branch to origin"
+git checkout master --quiet; git push
+echo "All done. You're on master."

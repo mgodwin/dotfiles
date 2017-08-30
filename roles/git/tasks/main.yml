@@ -1,0 +1,6 @@
+---
+- name: Setup gitconfig file
+  copy:
+    src: gitconfig
+    dest: ~/.gitconfig
+    mode: 0755

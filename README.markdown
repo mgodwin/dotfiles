@@ -2,16 +2,16 @@
 
 ## dotfiles
 
-Your dotfiles are how you personalize your system. These are mine. 
-They should work on 'nix and OSX.  Additional setup tasks will be present
-for 'nix, but it will guide you through what to do.  These are specifically for **bash**.
+Your dotfiles are how you personalize your system. These are mine.
+They only work on OSX currently, but I'd be happy to accept a PR for 'nix.  
+These are specifically for **bash**.
 
 ## philosophy
 
 Simplicity is the focus of these dotfiles.  They should do the minimum amount
 possible to get you setup but also provide hooks for you to customize where
 appropriate.  I don't believe in displaying 5000 things to you on your bash
-prompt.  I've integrated pieces of the bashit project.
+prompt.  They should be *fast*.
 
 ## prompt theme
 
@@ -23,14 +23,11 @@ on the context of where you are in your file system, show you:
 # Your current path
 ~/Development
 
-# Your current git branch
+# Your current git branch, if in a dir that has a git repo (sorry hg and svn users)
 ~/Development/Project(master)
 
 # Your current ruby version (only if using rbenv, and if different than system ruby version)
 ~/Development/RubyProject(master)(2.1.2)
-
-# Machine hostname, if dotfiles are installed on remote host
-hiro:/etc/apache2
 ```
 
 Colors are used to visually distinguish the prompt from other commands running
@@ -38,49 +35,53 @@ in your terminal.  This prompt is so simple, and so effective!
 
 ## install
 
-You'll need ruby installed to set things up.  Make sure you fork the repo and change the gitconfig!
-
-Run this:
+Fork the repo and customize based on your preferences. The install script
+will make sure you have everything needed to get going.
 
 ```sh
 git clone https://github.com/mgodwin/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
-# Edit git/gitconfig.symlink
-setup/bootstrap
+./install.sh
+# Optionally you can install apps as well (via homebrew-cask)
+./install-apps.sh
 ```
 
-This will symlink the appropriate files in `.dotfiles` to your home directory.
-Everything is configured and tweaked within `~/.dotfiles`, though.
+## ansible-based
 
-## components
+If you peek through the repo, I'm using ansible to manage all configuration.
+If you've never used ansible, the file `setup.yml` is a good place to start,
+then visit the `roles` directory.
 
-There's a few special files in the hierarchy.
+My Roles
+* **applications** - various software apps I like to use, installed via homebrew cask.
+* **bash** - where prompt theming magic happens and where you can customize your PATH, aliases etc.
+* **git** - Just copies over the gitconfig here, you should probably customize your name at the very least!
+* **ruby** - installs rbenv and ruby-build, so you can install your favorite ruby version.
 
-- **bin/**: Anything in `bin/` will get added to your `$PATH` and be made
-  available everywhere.
-- **bash/\*.sh**: Any files ending in `.sh` get loaded into your
-  environment.
-- **\*.symlink**: Any files ending in `*.symlink` get symlinked into
-  your `$HOME`. This is so you can keep all of those versioned in your dotfiles
-  but still keep those autoloaded files in your home directory. These get
-  symlinked in when you run `rake install`.
+Add whatever roles make sense for you - maybe you use node or python as well?
+Just don't forget to add them to `setup.yml` or `install-apps.yml`.
 
-## customizing
+After you make any changes, you can re-run `./install.sh` as many times as you'd like,
+ansible will figure out what to change to make everything end up in the right state.
 
-Use the ~/.localrc hook to store secret stuff you wouldn't want checked into your repo.
+## keep it private
+
+Use the `~/.localrc` hook to store secret stuff you wouldn't want checked
+into your repo (see `roles/bash/templates/bashrc.j2`).
 
 ## keep it lean
 
-Currently these dotfiles take approx 1s to load.  
+Currently these dotfiles take < 1s to load.  
 
     time source ~/.bashrc
 
-    real  0m1.042s
-    user  0m0.612s
-    sys 0m0.402s
+    real	0m0.559s
+    user	0m0.329s
+    sys	0m0.180s
 
-You open and close a lot of terminals over your life time.  It'd be better if startup time was reduced to half a second or less, however between autojump, bash completion, and prompt theming the time goes up to just over a second.  Would love to receive a PR that can reduce the startup time even further.
+You open and close a lot of terminals over your life time.  Keep things quick
 
 ## Thanks
 
-The original inspiration for these comes from holman's dotfiles, but have since diverged substantially.
+The original inspiration for these comes from holman's dotfiles,
+but have since diverged substantially.

@@ -1,0 +1,13 @@
+---
+# Autojump remembers where you cd to the most, and ranks those directories
+# highest, so you can type 'j reports' and it takes you to /.../.../../reports
+- name: Install autojump
+  homebrew:
+    name: autojump
+    state: present
+
+- name: Setup bashrc file
+  template:
+    src: bashrc.j2
+    dest: ~/.bashrc
+    mode: 0755

@@ -1,0 +1,38 @@
+# Sample gitconfig
+#
+# You probably want to change the [user] section here since you are not me.
+
+[hub]
+        protocol = https
+[user]
+        name = Mark Godwin
+        email = godwin.mark@gmail.com
+[credential]
+        helper = osxkeychain
+[alias]
+        promote = !$HOME/.dotfiles/bin/git-promote
+        hotfix-finish = !$HOME/.dotfiles/bin/git-hotfix-finish
+        unstage = reset HEAD --
+        count   = !git shortlog -sn
+        ls      = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+        filelog = log -u
+        graph   = log --graph --oneline --decorate --all
+        push-upstream = push -u
+[color]
+        diff = auto
+        status = auto
+        branch = auto
+        ui = true
+[core]
+        excludesfile = ~/.gitignore
+[apply]
+        whitespace = nowarn
+[mergetool]
+        keepBackup = false
+	      prompt = false
+[difftool]
+	      prompt = false
+[help]
+        autocorrect = 1
+[push]
+	      default = current
