@@ -6,6 +6,11 @@
     name: autojump
     state: present
 
+- name: Install bash-completion
+  homebrew:
+    name: bash-completion
+    state: present
+
 - name: Setup bashrc file
   template:
     src: bashrc.j2
