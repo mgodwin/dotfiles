@@ -1,0 +1,26 @@
+---
+- name: "Create directories for pathogen and plugins"
+  file: 
+    path: "~/.vim/{{item}}" 
+    state: directory
+  with_items: [autoload, bundle]
+
+- name: "Download Pathogen"
+  get_url:
+    url: https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+    dest: ~/.vim/autoload/
+
+- name: Setup vimrc file
+  template:
+    src: vimrc.j2
+    dest: ~/.vimrc
+    mode: 0755
+
+- name: "Install plugins"
+  git:
+    repo: "{{ item.repo }}"
+    version: "{{ item.version | default('master') }}"
+    dest: "~/.vim/bundle/{{ item.name | default(item.repo.split('/')[-1][:-4]) }}"
+    depth: 1
+  with_items: "{{ pathogen_plugins }}"
+  when: pathogen_plugins is defined
