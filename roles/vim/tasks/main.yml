@@ -24,3 +24,5 @@
     depth: 1
   with_items: "{{ pathogen_plugins }}"
   when: pathogen_plugins is defined
+
+- include_tasks: git_template_ctags.yml

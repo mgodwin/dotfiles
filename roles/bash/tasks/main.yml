@@ -11,3 +11,4 @@
     src: bashrc.j2
     dest: ~/.bashrc
     mode: 0755
+    backup: yes

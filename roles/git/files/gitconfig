@@ -6,7 +6,7 @@
         protocol = https
 [user]
         name = Mark Godwin
-        email = godwin.mark@gmail.com
+        email = mark.godwin@logikcull.com
 [credential]
         helper = osxkeychain
 [alias]

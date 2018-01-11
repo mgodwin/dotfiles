@@ -1,0 +1,34 @@
+---
+# Approach taken from http://tbaggery.com/2011/08/08/effortless-ctags-with-git.html
+- name: Setup git_template git config entry
+  git_config:
+    scope: global
+    name: init.templatedir
+    value: ~/.git_template
+
+- name: Create git_template/hooks direcotry 
+  file:
+    path: ~/.git_template/hooks
+    state: directory
+
+- name: Place ctags file
+  copy:
+    src: ctags.sh 
+    dest: ~/.git_template/hooks/ctags
+    mode: +x
+
+- name: Place hooks
+  copy:
+    src: hook-commit-merge-checkout.sh
+    dest: "~/.git_template/hooks/{{item}}"
+    mode: +x
+  with_items:
+    - post-commit
+    - post-checkout
+    - post-merge
+
+- name: Place post rewrite hook
+  copy:
+    src: hook-post-rewrite.sh 
+    dest: ~/.git_template/hooks/post-rewrite
+    mode: +x
