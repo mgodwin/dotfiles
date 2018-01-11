@@ -3,7 +3,7 @@
 ## dotfiles
 
 Your dotfiles are how you personalize your system. These are mine.
-They only work on OSX currently, but I'd be happy to accept a PR for 'nix.
+They almost work on ubuntu, but primarily only work on OSX.
 These are specifically for **bash**.
 
 ## install
@@ -15,8 +15,6 @@ will make sure you have everything needed to get going.
 git clone https://github.com/mgodwin/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 ./install.sh
-# Optionally you can install apps as well (via homebrew-cask)
-./install-apps.sh
 ```
 
 ## ansible-based
@@ -26,16 +24,28 @@ If you've never used ansible, the file `setup.yml` is a good place to start,
 then visit the `roles` directory.
 
 My roles:
-* **applications** - various software apps I like to use, installed via homebrew cask.
 * **bash** - where prompt theming magic happens and where you can customize your PATH, aliases etc.
 * **git** - Just copies over the gitconfig here, you should probably customize your name at the very least!
 * **ruby** - installs rbenv and ruby-build, so you can install your favorite ruby version.
+* **vim** - installs rbenv and ruby-build, so you can install your favorite ruby version.
 
 Add whatever roles make sense for you - maybe you use node or python as well?
-Just don't forget to add them to `setup.yml` or `install-apps.yml`.
+Just don't forget to add them to `setup.yml`.
 
 After you make any changes, you can re-run `./install.sh` as many times as you'd like,
 ansible will figure out what to change to make everything end up in the right state.
+
+### Remote install
+If you don't have ansible installed on a remote host that you're sshing into or the machine
+might install an older version of ansible, you can locally deploy the dotfiles onto the remote
+machine, since it's just ansible :the_horns:.
+
+```
+cd ~/.dotfiles
+ansible-playbook -iremotehostname, --tags=vim setup.yml
+```
+Note the trailing `,` after the hostname.  You _have_ to have that or ansible will look for a file
+named `remotehostname` on the filesystem and emit a bunch of warnings.
 
 ## prompt theme
 

@@ -1,0 +1,14 @@
+---
+- name: Bash Packages
+  debug:
+    msg: "Installing package dependencies for {{ansible_distribution}}"
+
+- name: Install autojump
+  homebrew:
+    name: autojump
+    state: present
+
+- name: Install bash-completion
+  homebrew:
+    name: bash-completion
+    state: present

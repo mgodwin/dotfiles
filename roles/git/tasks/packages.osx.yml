@@ -1,0 +1,7 @@
+---
+# Need to install git from homebrew, for latest/greatest version, but also b/c
+# this installs the bash command completion as well.
+- name: Install git
+  homebrew:
+    name: git
+    state: present
