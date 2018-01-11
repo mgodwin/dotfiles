@@ -24,10 +24,10 @@ If you've never used ansible, the file `setup.yml` is a good place to start,
 then visit the `roles` directory.
 
 My roles:
-* **bash** - where prompt theming magic happens and where you can customize your PATH, aliases etc.
+* **bash** - Where prompt theming happens and where you can customize your PATH, aliases etc.
 * **git** - Just copies over the gitconfig here, you should probably customize your name at the very least!
-* **ruby** - installs rbenv and ruby-build, so you can install your favorite ruby version.
-* **vim** - installs rbenv and ruby-build, so you can install your favorite ruby version.
+* **ruby** - Installs rbenv and ruby-build, so you can install your favorite ruby version.
+* **vim** - Installs pathogen and my vim settings.
 
 Add whatever roles make sense for you - maybe you use node or python as well?
 Just don't forget to add them to `setup.yml`.
@@ -38,12 +38,13 @@ ansible will figure out what to change to make everything end up in the right st
 ### Remote install
 If you don't have ansible installed on a remote host that you're sshing into or the machine
 might install an older version of ansible, you can locally deploy the dotfiles onto the remote
-machine, since it's just ansible :the_horns:.
+machine, since it's just ansible.
 
 ```
 cd ~/.dotfiles
 ansible-playbook -iremotehostname, --tags=vim setup.yml
 ```
+
 Note the trailing `,` after the hostname.  You _have_ to have that or ansible will look for a file
 named `remotehostname` on the filesystem and emit a bunch of warnings.
 
