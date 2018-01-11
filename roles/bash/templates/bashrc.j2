@@ -10,6 +10,12 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 {# inject contents of our theme file #}
 {{ lookup('file', 'theme.sh') }}
 
+{# OSX Specific customizations #}
+{% if ansible_distribution == 'MacOSX' %}
+#TODO finish this
+{# lookup('file', 'osx.sh') #}
+{% endif %}
+
 # use .localrc for SUPER SECRET CRAP that you don't
 # want in your public, versioned repo.
 if [[ -a ~/.localrc ]]; then

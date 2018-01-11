@@ -11,4 +11,4 @@ then
   alias la='gls -A --color'
 fi
 
-alias reload='unalias -a && source ~/.bashrc'
+alias reload='exec bash'

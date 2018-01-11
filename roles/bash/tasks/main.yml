@@ -1,15 +1,10 @@
 ---
 # Autojump remembers where you cd to the most, and ranks those directories
 # highest, so you can type 'j reports' and it takes you to /.../.../../reports
-- name: Install autojump
-  homebrew:
-    name: autojump
-    state: present
 
-- name: Install bash-completion
-  homebrew:
-    name: bash-completion
-    state: present
+# Install packages
+- include_tasks: packages.osx.yml
+  when: "ansible_distribution == 'MacOSX'"
 
 - name: Setup bashrc file
   template:

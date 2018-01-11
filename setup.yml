@@ -1,7 +1,6 @@
 ---
-- hosts: 127.0.0.1
-  connection: local
-  gather_facts: no
+- hosts: all
+  gather_facts: yes 
   roles:
     - role: bash
       tags: bash
@@ -15,4 +14,8 @@
         - repo: https://github.com/tpope/vim-bundler.git
         - repo: https://github.com/joshdick/onedark.vim.git
         - repo: https://github.com/tpope/vim-surround.git  
+        - repo: https://github.com/tpope/vim-flagship.git
+        - repo: https://github.com/tpope/vim-rails.git
+        - repo: https://github.com/tpope/vim-dispatch.git
+        - repo: https://github.com/pangloss/vim-javascript.git
     - ruby
