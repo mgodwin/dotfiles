@@ -4,36 +4,56 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 {# inject contents of our aliases file #}
 {{ lookup('file', 'aliases.sh') }}
 
-{# inject contents of our path file #}
-{{ lookup('file', 'path.sh') }}
-
 {# inject contents of our theme file #}
 {{ lookup('file', 'theme.sh') }}
 
 {# OSX Specific customizations #}
 {% if ansible_distribution == 'MacOSX' %}
-#TODO finish this
-{# lookup('file', 'osx.sh') #}
+{{ lookup('file', 'osx.sh') }}
 {% endif %}
 
-# use .localrc for SUPER SECRET CRAP that you don't
+# Don't put duplicate lines in the history.
+HISTCONTROL=ignoredups:ignorespace
+
+# Append to the history file, don't overwrite it
+shopt -s histappend
+
+# Set history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# Check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# Enable bash completion if present
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    . /etc/bash_completion
+fi
+
+# Enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# Use .localrc for SUPER SECRET STUFF that you don't
 # want in your public, versioned repo.
 if [[ -a ~/.localrc ]]; then
   source ~/.localrc
 fi
 
-# Setup bashcompletion provided by homebrew
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
-fi
-
-# Setup autojump to quickly jump to directories
-[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
-
-# GRC colorizes nifty unix tools all over the place
-if $(grc &>/dev/null);then
-  source `brew --prefix`/etc/grc.bashrc
-fi
+# Helper method to restore ssh-agent after tmux session detach/reattach
+fixssh() {
+  eval $(tmux show-env    \
+          |sed -n 's/^\(SSH_[^=]*\)=\(.*\)/export \1="\2"/p')
+}
 
 export EDITOR='vim'
 export TERM='xterm-256color'

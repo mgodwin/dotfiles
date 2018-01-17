@@ -1,5 +1,5 @@
-#!/usr/bin/env bash
-
+# Prompt Theme
+# ------------
 function __ {
   echo "$@"
 }
@@ -88,9 +88,6 @@ bold_blue="$(color blue bold)"
 normal="$(color reset)"
 reset_color="$(__make_ansi '' 39)"
 
-
-#!/usr/bin/env bash
-
 THEME_PROMPT_HOST='\H'
 SCM_GIT='git'
 
@@ -132,7 +129,7 @@ function git_prompt_info {
   echo -e "($SCM_BRANCH)"
 }
 
-#added TITLEBAR for updating the tab and window titles with the pwd
+# Added TITLEBAR for updating the tab and window titles with the pwd
 case $TERM in
   xterm*)
   TITLEBAR="\[\033]0;\w\007\]"
@@ -144,7 +141,7 @@ esac
 PROMPT="${TITLEBAR}${green}\w${bold_blue}\$(scm_prompt_info)${reset_color}${bold_red}\$(ruby_version_prompt)${reset_color}${normal} "
 
 
-# scm themeing
+# SCM themeing
 SCM_THEME_PROMPT_PREFIX="("
 SCM_THEME_PROMPT_SUFFIX=")"
 

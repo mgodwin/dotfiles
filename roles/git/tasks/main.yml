@@ -1,11 +1,14 @@
 ---
 
-# Install packages
 - include_tasks: packages.osx.yml
   when: "ansible_distribution == 'MacOSX'"
 
-- name: Setup gitconfig file
-  copy:
-    src: gitconfig
-    dest: ~/.gitconfig
-    mode: 0755
+- name: Set git config name and email
+  git_config:
+    scope: global
+    name: "{{ item.config_name }}" 
+    value: "{{ item.config_value }}" 
+  with_items:
+    - { config_name: "user.name", config_value: "{{ git_user_name }}" }
+    - { config_name: "user.email", config_value: "{{ git_user_email }}" }
+

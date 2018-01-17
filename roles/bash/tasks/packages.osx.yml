@@ -8,6 +8,12 @@
     name: autojump
     state: present
 
+# Gives nice ls coloring
+- name: Install coreutils
+  homebrew:
+    name: coreutils
+    state: present
+
 - name: Install bash-completion
   homebrew:
     name: bash-completion

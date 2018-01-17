@@ -26,3 +26,5 @@
   when: pathogen_plugins is defined
 
 - include_tasks: git_template_ctags.yml
+  tags:
+    - vim_git_hooks

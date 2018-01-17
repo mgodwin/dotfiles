@@ -4,7 +4,7 @@
   git_config:
     scope: global
     name: init.templatedir
-    value: ~/.git_template
+    value: "{{ansible_env.HOME}}/.git_template"
 
 - name: Create git_template/hooks direcotry 
   file:

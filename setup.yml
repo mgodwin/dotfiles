@@ -1,6 +1,8 @@
 ---
 - hosts: all
   gather_facts: yes 
+  vars_files:
+    - vars.yml
   roles:
     - role: bash
       tags: bash
@@ -8,14 +10,5 @@
       tags: git
     - role: vim
       tags: vim
-      pathogen_plugins:
-        - repo: https://github.com/tpope/vim-sensible.git
-        - repo: https://github.com/tpope/vim-fugitive.git
-        - repo: https://github.com/tpope/vim-bundler.git
-        - repo: https://github.com/joshdick/onedark.vim.git
-        - repo: https://github.com/tpope/vim-surround.git  
-        - repo: https://github.com/tpope/vim-flagship.git
-        - repo: https://github.com/tpope/vim-rails.git
-        - repo: https://github.com/tpope/vim-dispatch.git
-        - repo: https://github.com/pangloss/vim-javascript.git
-    - ruby
+    - role: ruby
+      tags: ruby

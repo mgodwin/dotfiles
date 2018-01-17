@@ -12,7 +12,7 @@ if [ "$(uname)" == "Darwin" ]; then
     brew install ansible
   fi
 
-  ansible-playbook --inventory=localhost, --connection=local setup.yml
+  ansible-playbook --inventory=localhost, --connection=local $@ setup.yml
 else
   echo "Unsupported OS, please run from a Mac - you can use SSH to setup linux from mac"
 fi
