@@ -15,6 +15,8 @@ will make sure you have everything needed to get going.
 git clone https://github.com/mgodwin/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 ./install.sh
+# optionally switch the default shell to bash
+chsh -s /bin/bash
 ```
 
 ## ansible-based
