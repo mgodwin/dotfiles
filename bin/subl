@@ -1,5 +1,0 @@
-#!/bin/bash
-# Runs Sublime binary
-# See http://www.sublimetext.com/docs/3/osx_command_line.html
-
-/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl $@
